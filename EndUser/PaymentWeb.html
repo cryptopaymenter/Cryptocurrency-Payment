@@ -1,0 +1,54 @@
+﻿Payment example web<br><br>
+<!-- 
+ccID (Currency type)
+0:Tron
+-->
+<SCRIPT language="JavaScript">
+
+</SCRIPT>
+
+<p style="color:red">Caution</p>
+If the amount you send is lower than the minimum fee of the currency, payment will not be made and no refund will be made.
+It is highly discouraged to use an exchange's wallet.
+<br><br><br>
+1. After entering your wallet address, make a payment request through the 'Request Payment' button.
+At this time, it is not necessary to write down the password, but it is recommended to write it down.
+<br>
+2. If the payment request is successful, the server's wallet address will be returned.
+<br>
+3. Transfer the desired amount of currency corresponding to 'Currency type' to the wallet address of the api server obtained in step 2.
+<br>
+4. If your transmission is successful in step 3, find out the transaction ID of your transmission.
+<br>
+5. Write the transaction ID in 'Start Payment' and enter the password you wrote down in step 1.
+<br><br>
+<form name="fhead" method="post" action="request_payment.php" autocomplete="off" enctype="multipart/form-data"> 
+Currency type :　<input name="ccID" type="text" maxlength='4' value = "0" tabindex="3" class="back" /><br /> 
+Sender wallet address :　<input name="sender" type="text" maxlength='512' value = "Your wallet address" tabindex="4" class="back" /><br /> 
+Amount : <input name="amount" type="text" maxlength='30' value = "50.0" tabindex="5" class="back" /><br /> 
+Payment password :　<input name="payment_password" type="text" maxlength='16' value = "" tabindex="6" class="back" /><br /> 
+	<input type="submit" name="requestpayment" value="Request Payment" language="javascript"  id="Send_Button" /><br><br>
+</form>
+
+
+<form name="fhead" method="post" action="start_payment.php" autocomplete="off" enctype="multipart/form-data"> 
+Currency type :　<input name="ccID" type="text" maxlength='4' value = "0" tabindex="7" class="back" /><br /> 
+Amount : <input name="amount" type="text" maxlength='30' value = "50.0" tabindex="8" class="back" /><br /> 
+Transaction ID :　<input name="txID" type="text" maxlength='512' value = "TXID" tabindex="9" class="back" /><br /> 
+Payment password :　<input name="payment_password" maxlength='16' type="text" value = "" tabindex="10" class="back" /><br /> 
+	<input type="submit" name="startpayment" value="Start Payment" language="javascript"  id="Send_Button" /><br><br>
+</form>
+
+
+<br><br><br><br>
+
+
+<form name="fhead" method="post" action="getapiserverwallet.php" autocomplete="off" enctype="multipart/form-data"> 
+	Currency type :　<input name="ccID" type="text" maxlength='4' value = "0" tabindex="1" class="back" /><br /> 
+	<input type="submit" name="getapiserverwallet" value="Get API server wallet address" language="javascript"  id="Send_Button" /><br>
+</form>
+
+<form name="fhead" method="post" action="getminimumfee.php" autocomplete="off" enctype="multipart/form-data"> 
+	Currency type :　<input name="ccID" type="text" maxlength='4' value = "0" tabindex="2" class="back" /><br /> 
+	<input type="submit" name="getminimumfee" value="Get minimum fee infomation" language="javascript"  id="Send_Button" /><br>
+</form>
